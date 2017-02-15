@@ -1,0 +1,12 @@
+Original tuple
+<timestamp, idUser, idMatch, ManOfMatch>
+
+1. Filter the list of tuples and select only those corresponding to the past
+   year
+
+2. Map the remaining tuples from <timestamp, idUser, idMatch, ManOfMatch> to
+   <ManOfTheMatch, 1>
+
+3. Reduce the obtained tuples by summing their values. This should produce
+   tuples of the type <ManOfTheMatch, where n≥1 is the amount of times the
+   player has been selected man of the match.

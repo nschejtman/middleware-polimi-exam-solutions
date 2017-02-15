@@ -1,0 +1,42 @@
+SOAP and REST are two alternatives to approaching Web services quite different
+from each other. The first difference (probably the biggest one) is that SOAP is
+a protocol while REST is an architectural style. While SOAP cannot use REST,
+REST actually can use SOAP.
+
+This first difference is why REST is more flexible than SOAP in almost every
+aspect. SOAP defines a processing model, a messaging model and an extensibility
+model, while REST defines nothing (or little) of these. While SOAP messaging is
+based on XML, REST admits a variety of message formats like JSON, XML, HTML,
+plain text, you name it. The only condition is to use http as a transport
+protocol. This becomes very intuitive when your web services involve simple
+CRUD operations, which resemble specifically http verbs. SOAP does not impose
+any restrictions in the transport protocol however. SOAP can use http as well as
+other transport protocols like SMTP.
+
+Another important difference is the way in which both standards expose services.
+SOAP uses service interfaces detailed in an interface definition language like
+WSDL while REST just uses simple URIs (Uniform Resource Identifiers) plus http
+verbs. Moreover, SOAP uses service registries to decouple service providers from
+service consumers in a simple publish-discover pattern. Things get more complex
+when actually thinking how to discover services. For this SOAP introduces yet
+another standard for describing (meant for publishing) web services called UDDI
+(Universal Description, Discovery and Integration).
+
+Other differences between SOAP and REST include bandwidth consumption, which is
+much lower for REST and security, which SOAP also defines via WS-Security
+whereas REST inherits security measures from the transport layer. REST is also
+stateless (very useful in the internet setting) while SOAP isn't.
+
+Given all of this differences, when is it better to use SOAP or REST? Well, the
+first thing to notice is that, unless you are going to create your own web
+service, this decision has already been made for you. Check what the service
+providers you are planning to use offering. This tips the balance in favor of
+REST since today REST is widely more popular than SOAP. Most service providers
+like Amazon and Google are migrating their APIs from SOAP to REST. The only
+reason why many providers are still offering SOAP APIs is to support legacy
+code. The principal advantage to use REST is it's simplicity and flexibility. It
+has been proven flexible enough to scale over the whole web.
+
+In conclusion, unless you have to implement a very specific service
+infrastructure, over a private network, with tight security and transport
+requirements... always go with REST. 
