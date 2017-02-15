@@ -1,4 +1,4 @@
-public class DayForecast{
+public class DayForecast implements Serializable{
   private float high;
   private float low;
   private float rainProb;
@@ -9,5 +9,5 @@ public class DayForecast{
     this.rainProb = rainProb;
   }
 
-  // Assume getters and setters 
+  // Assume getters and setters
 }
