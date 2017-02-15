@@ -1,0 +1,38 @@
+In REST, we have both resources and resource representations. A resource is
+anything we expose to the Web, from a document or video clip to a business
+process or device. It might happen that a resource is a physical resource, so
+what we expose to the Web is actually information that characterizes that
+resource. We say that we "project" this resource to the Web. A representation
+on the other hand is a transformation or a view of a resource's state at an
+instant in time.
+
+There are many reasons to keep these two separate:
+  * As we said before, resource might be physical. By distinguishing the
+  "information" resource we recognize that objects in the real world can have
+  properties that are not entirely captured by any of it's representations. We
+  are typically, however, interested in information resources (e.g. a tweet).
+
+  * This separation promotes loose coupling between backend systems and
+  consuming applications. For example, let's consider a tweet resource. This
+  resource would have to be represented by it's web client, mobile client, API
+  client, etc. Each client might be better off handling a different
+  representation of the same resource (the tweet) like for example a JSON file
+  for the web client or a serialized object in whatever programming language we
+  are using with the Twitter API.
+
+  * It helps scalability. A representation is static, as it is defined as the
+  state of a resource at a given time. It cannot change. What does however
+  change is the resource itself, thus producing new representations. Therefore,
+  a resource cannot be cached, but what can be are its different
+  representations.
+
+  * It helps security, as we do not expose directly the state of a resource.
+
+  * It helps flexibility, as we might provide different representations
+  according to the consuming user. Let's consider again the example of the
+  tweet. One client might be a human user which would like to access the
+  representation in a human readable format, while a machine might prefer
+  bytecode encoded with one or other formats. This flexibility does not involve
+  only the representation format but also the information represented. For
+  example, the human client might be only interested in the content of the
+  tweet while an API client might also want to know the tweetId of such tweet.

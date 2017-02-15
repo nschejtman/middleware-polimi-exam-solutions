@@ -1,0 +1,31 @@
+Mexican pavillion:
+------------------
+  * Filter the list of tuples leaving only the ones with direction == 1 and
+  pavillionID == mexicanPavillionID
+
+  * Map the remaining tuples <timestamp, pavillionID, personID, direction> to
+  <timestamp_day, 1>
+
+  * Reduce the resulting tuples by timestamp (with day precision) and summing
+  their values. Result should be a list of tuples of the type <timestamp_day,
+  n_visits>
+
+  * Sort the list of tuples by decreasing n_visits
+
+  * Get the first three tuples
+
+July attendance:
+----------------
+  * Filter the list of tuples to those with timestamps between 1st and 31st of
+  July and direction == 1
+
+  * Map the remaining tuples to <timestamp_day, pavillionID, 1>
+
+  * Reduce the resulting tuples by timestamp_day and pavillionID summing their
+  values. Result should be a list of tuples of the type <timestamp_day,
+  pavillionID, n_visits> containing at most one tuple for each pavillion for
+  each day in the given date range.
+
+  * Reduce the resulting tuples by timestamp_day by taking the tuple with the
+  highest number of visits. Result should be a list of tuples of the same type
+  as above but containing at most one tuple for each day of the date range.
