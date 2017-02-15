@@ -9,7 +9,7 @@ public class MsgBatcher{
   public void enqueue(Message message){
     syncronized(batch){
       while(batch.lenght() == capacity){
-        Thread.sleep(); // Block the caller thread until the batch is empty
+        batch.wait(); // Block the caller thread until the batch is empty
       }
       batch.put(message);
     }

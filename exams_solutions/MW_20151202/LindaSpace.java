@@ -16,7 +16,7 @@ public class LindaSpace{
     synchronized(space){
 
       while(!space.contains(integer)){
-          Thread.sleep();
+          space.wait();
       }
       /**
       Assuming that for some reason we have to actually have to get the
@@ -32,7 +32,7 @@ public class LindaSpace{
     synchronized(space){
 
       while(!space.contains(integer)){
-          Thread.sleep();
+          space.wait();
       }
       /**
       Assuming that for some reason we have to actually have to get the
