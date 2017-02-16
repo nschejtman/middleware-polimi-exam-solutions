@@ -1,0 +1,25 @@
+Original tuple format
+<date, sourceNum, destNum, length, cost>
+
+Exercise 1
+----------
+1. Filter all the tuples and leave only those corresponding to the specified
+   date range and the specified sourceNum.
+2. Map the remaining tuples to obtain tuples of the format <month, cost>, where
+   month just extracts the month from the given date.
+3. Reduce the resulting tuples by month, by adding their cost. The result of
+   this operation should be a list of tuples, one per month, containing the
+   cost of the service for that month for the given user.
+
+Exercise 2
+----------
+1. Filter all the tuples and leave only those corresponding to 2015 and the
+   specified sourceNum
+2. Map the remaining tuples to obtain tuples of the format <isInNetwork, cost>,
+   where isInNetwork is a transformation of the destNum that returns a boolean
+   value indicating if the destNum starts with 333 or not.
+3. Reduce the resulting tuples by isInNetwork, by summing their cost. The result
+   of this operation should be just two tuples corresponding to the total money
+   spent during 2015 calling numbers in and out the network.
+4. Map the resulting tuples  by just dividing the total cost over 12 to obtain
+   the monthly average. 

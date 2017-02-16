@@ -1,0 +1,22 @@
+REST and SOAP both face the same problems regarding atomic transactions. There
+is no stateful connection in neither of them and every operation is
+automatically committed. This allows users to see interim states between
+different operations in a batch of operations.
+
+This problem has a simple but not "nice" solution: grouping the entire batch of
+operations as a single operation. In our bank example, the operations of
+removing the selected amount from one account and adding it to the other are
+presented as a single operation (oversimplifying the process). This new
+operation is a higher-level operation and therefore simplifies the service API
+and makes the client code much simpler.
+
+So, why is this solution not "nice" then? Well, for it to be an atomic operation
+it must be during only one request-response exchange. This means that the
+connection with the client must be left open for the entire length of this
+operation, and given that this is a complex operation (actually a batch of
+operations)... the server performance goes down and things don't scale.
+
+Regarding this, the first approach to think about is actually compromising
+atomicity. Is it really necessary to have ONE atomic operation? If it is, then
+take the approach just mentioned, which btw is called low granularity services
+or high-level batch operations.
