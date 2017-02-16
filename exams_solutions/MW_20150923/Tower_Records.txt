@@ -1,0 +1,40 @@
+Original tuple format <date, userID, artist, vinyl, genre, cost>
+
+Top ten artists job
+-------------------
+
+1. Filter all the tuples for the specified date range 27/11/14 to 31/1/15
+2. Map the remaining tuples to obtain tuples of the type <artist, cost>. We
+   should have one tuple of this type for each sold record in the specified date
+   range
+3. Reduce the resulting tuples by artist, by adding up their costs. The result
+   of this operation should be a list of tuples, one for each artist, containing
+   the artist name and the revenue the artist generated in the specified date
+   range.
+4. Sort the resulting tuples in decreasing revenue order.
+5. Take the first 10 tuples.
+
+Revenue per hour job
+--------------------
+
+1. Filter all the tuples for 2014.
+2. Map the remaining tuples to obtain tuples of the type <day, hour, cost>,
+   where day and hour are just disambiguations of the original date attribute.
+3. Reduce the remaining tuples by day and hour, by summing up the cost. The
+   result of this operation should be a list of tuples, one for each day and
+   hour if at least one record was sold at that hour in that day, and the
+   revenue generated at that time (day-hour).
+
+   (Example: let's say a year has 360 work days and the store is generally open
+   for 12 hours per day and at least one record is sold per hour. That should
+   add up something about 360 * 12 * 1 ~ 4320 tuples).
+4. Map the resulting tuples to obtain tuples of the type <hour, revenue, 1>
+5. Reduce the resulting tuples by hour, by summing up the revenues and 1s. The
+   result of this operation should be a list of tuples, one per hour (or opening
+   hour) containing the total revenue generated in that hour over the course of
+   x days during 2014, where x is the last item of the tuple
+   (<hour, totalRevenue, x>).
+6. Map the resulting tuples by dividing totalRevenue/x. Note this is not a
+   reduce operation since we are NOT combining tuples. We are just transforming
+   the tuples by applying an operation over their attributes, which is exactly
+   the nature of a map operation.

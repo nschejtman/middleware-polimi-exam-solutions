@@ -1,0 +1,27 @@
+WSDL stands for Web Service Description Language. It is an XML specification of
+a web service. It's kind of a syntactic contract between a service provider and
+a service consumer. WSDL describes four pieces of data:
+  * Interface information: describes all the publicly available functions
+  * Data type information: describes the format of the data carries by messages
+  * Binding information: describes the transport protocol used (remember SOAP
+    allows to use different transport protocols)
+  * Address information: for locating the specified service
+
+All of this is described in a WSDL file, which contains the following tags:
+  * <types> : which define data types
+  * <message> : what messages will be transmitted
+  * <portType> : a group of operations, which can be of the following types
+    - Request-response
+    - Solicit-response
+    - One way
+    - Notification
+    all of these which can be either synchronous or asynchronous
+  * <binding> : how the messages will be transferred on the wire. It contains
+    the following parts:
+     - Binding type (RPC/literal, RPC/encoded, document/literal,
+       document/encoded, document/literal wrapped)
+     - SOAP operation (function name, input params and return params)
+  * <port> : specifies an individual endpoint by specifying a single address for
+    a binding
+  * <service> : where is the service located. It list all the available ports
+    for that service
